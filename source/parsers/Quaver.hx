@@ -7,7 +7,7 @@ import yaml.Yaml;
 // flxsound
 class QuaverParser
 {
-	public static function load(chart:String = "assets/defaultSongs/purpleeater/91021.qua", folderPath:String = "assets/defaultSongs/vis/")
+	public static function load(chart:String = "assets/defaultSongs/purpleeater/91021.qua", folderPath:String = "assets/defaultSongs/purpleeater/")
 	{
 		/* var chartData = Yaml.read(chart); */
 		var chartData = Yaml.read(chart);
@@ -38,6 +38,9 @@ class QuaverParser
 		// import flixel.FlxG;
 
 		trace(folderPath + chartData.get("AudioFile"));
-		FlxG.sound.play(folderPath + "audio.ogg", 1, false);
+		var sound:FlxSound = new FlxSound();
+		sound.loadEmbedded(folderPath + chartData.get("AudioFile"));
+		sound.play();
+		/* FlxG.sound.play(folderPath + chartData.get("AudioFile")); */
 	}
 }
